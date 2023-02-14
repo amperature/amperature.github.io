@@ -19,4 +19,4 @@ coding:
 links and downloads to projects
 
 stratus:
-
+my gaming stats (TGM/TETR.IO)
