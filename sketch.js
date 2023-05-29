@@ -1,27 +1,46 @@
-let myFont;
+//let myFont;
+
 function preload() {
-  myFont = loadFont('assets/gothicb.ttf');
+  myFont = loadFont('GOTHICB.TTF');
 }
+
 let angle = 0;
+var x = windowWidth / 2;
+var y = windowHeight / 2;
 
 function setup() {
-  createCanvas(1920, 1080);
-  textSize(75);
+  preload();
+  createCanvas(windowWidth, windowHeight);
+  textSize(90);
   strokeWeight(20);
   strokeCap(SQUARE);
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+
+function arcs() {
   noFill();
+  stroke(255, 255, 255)
+  arc(windowWidth/2, 2/windowHeight, 400, 400, angle, angle + PI + HALF_PI);
+  arc(windowWidth/2, 2/windowHeight, 300, 300, angle + QUARTER_PI, angle + PI);
+  arc(windowWidth/2, 2/windowHeight, 200, 200, angle + PI, angle + QUARTER_PI);
+}
+
+function chronoText() {
+  textFont(myFont);
+  noStroke();
+  textAlign(CENTER)
+  fill(255, 255, 255);
+  text('chronosaga', windowWidth/2, windowHeight/2);
 }
 
 function draw() {
   background(130, 172, 253);
-  textFont(myFont);
-  text('chronosaga', 1280, 720);
-  noFill();
-  stroke(255, 255, 255);
-  arc(1280, 720, 200, 200, angle, angle + PI + HALF_PI);
-  arc(1280, 720, 100, 100, angle + PI + HALF_PI, angle)
+  windowResized();
+  arcs();
+  //chronoText();
   angle = angle + 0.04;
-  noStroke();
   fill(255, 255, 255);
-
 }
